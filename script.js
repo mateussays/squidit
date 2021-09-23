@@ -8,8 +8,23 @@ function transformDate (date) {
   return `${transformDate} ${transformHour}`;
 }
 
+function loading() {
+  const load = document.createElement('div');
+  load.innerHTML = `<div class="loader bigger border-lilac" role="status">
+  <span class="visually-hidden">Loading...</span>
+  </div>`;
+  load.className = 'loading';
+  gallery.appendChild(load);
+}
+
+function removeLoading() {
+  const selectLoading = document.querySelector('.loading');
+  selectLoading.remove();
+}
+
 
 async function getImages () {
+  loading()
   const fetchImages = await fetch('https://us-central1-squid-apis.cloudfunctions.net/test-front-basic');
   const result =  await fetchImages.json();
   console.log(result)
@@ -27,6 +42,9 @@ async function getImages () {
     </div></a>`;
     gallery.appendChild(createDiv);
   })
+  removeLoading();
 }
 
-getImages();
+document.addEventListener("DOMContentLoaded", function() {
+  getImages();
+});
