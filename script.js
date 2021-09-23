@@ -5,14 +5,16 @@ async function getImages () {
   const result =  await fetchImages.json();
   console.log(result)
   result.forEach((item) =>{
-    const { imagens: { thumbnail: { url } } } = item;
-    let image = document.createElement('img');
-    let createDiv = document.createElement('div');
-    createDiv.className = "col";
+    const { comentarios, link, metadados: { engagement }, imagens: { thumbnail: { url } }, usuario: { username } } = item;
+    const createDiv = document.createElement('div');
     createDiv.className = "box";
-    image.className = "img-fluid";
-    image.src = url;
-    createDiv.appendChild(image);
+    createDiv.innerHTML = `<a href=${link} target="_blank">
+    <img src=${url} class="img-fluid image" />
+    <div class="middle">
+    <p>@${username}<p/>
+    <p>${comentarios}<p/>
+    <p>${engagement}</p>
+    </div></a>`;
     gallery.appendChild(createDiv);
   })
 }
