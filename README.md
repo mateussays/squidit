@@ -24,9 +24,4 @@ mkdir projects
 cd projects
 git clone https://github.com/mateussays/squidit.git
 ```
-  3.  Instale as dependências:
-```
-cd squidit
-npm i
-```
-  4.  Por último abra o arquivo index.html no seu navegador
+  3.  Por último abra o arquivo index.html no seu navegador
