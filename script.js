@@ -25,7 +25,7 @@ function removeLoading() {
 async function getImages() {
   const fetchImages = await fetch('https://us-central1-squid-apis.cloudfunctions.net/test-front-basic');
   const result =  await fetchImages.json();
-
+  
   loading()
 
   result.forEach((item) => {
